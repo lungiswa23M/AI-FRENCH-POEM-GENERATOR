@@ -1,122 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <title>AI French Poem Generator</title>
     <style>
-        body {
-            background:aliceblue;
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
+      body {
+        background: aliceblue;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
 
-        header {
-            margin-bottom: 30px;
-        }
+      header {
+        margin-bottom: 30px;
+      }
 
-        .container {
-            margin: 100px auto;
-            max-width: 500px;
-        }
+      .container {
+        margin: 100px auto;
+        max-width: 500px;
+      }
 
-        .instructions {
-            padding: 15px;
-            width: 78%;
-            line-height: 20px;
-            border: 1px solid rgba(39, 33, 66, 0.6);
-            font-size: 15px;
-            border-radius: 20px;
-            color: #272044;
-        }
+      .instructions {
+        padding: 15px;
+        width: 78%;
+        line-height: 20px;
+        border: 1px solid rgba(39, 33, 66, 0.6);
+        font-size: 15px;
+        border-radius: 20px;
+        color: #272044;
+      }
 
-        .submit-button {
-            margin-left: 10px;
-            background: #ee4266;
-            color: white;
-            width: 130px;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-size: 15px;
-        }
+      .submit-button {
+        margin-left: 10px;
+        background: #ee4266;
+        color: white;
+        width: 130px;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 50px;
+        font-size: 15px;
+      }
 
-        a {
-            color: #ee4266;
-        }
+      a {
+        color: #ee4266;
+      }
 
-        .poem {
-            font-size: 15px;
-            padding: 30px;
-            background: white;
-            line-height: 2em;
-            border-radius: 10px;
-            box-shadow: 0px 20px 60px rgba(65, 50, 100, 0.08);
-            border-left: 3px solid #ee4266;
-        }
+      .poem {
+        font-size: 15px;
+        padding: 30px;
+        background: white;
+        line-height: 2em;
+        border-radius: 10px;
+        box-shadow: 0px 20px 60px rgba(65, 50, 100, 0.08);
+        border-left: 3px solid #ee4266;
+      }
 
-        form {
-            padding: 30px;
-            background-color: white;
-            border-radius: 20px;
-            display: flex;
-            margin-bottom: 30px;
-        }
+      form {
+        padding: 30px;
+        background-color: white;
+        border-radius: 20px;
+        display: flex;
+        margin-bottom: 30px;
+      }
 
-        h1 {
-            text-align: center;
-            font-weight: 500;
-            font-size: 35px;
-            line-height: 1.5;
-        }
+      h1 {
+        text-align: center;
+        font-weight: 500;
+        font-size: 35px;
+        line-height: 1.5;
+      }
 
-        footer {
-            text-align: center;
-            font-size: 15px;
-            margin-top: 30px;
-        }
+      footer {
+        text-align: center;
+        font-size: 15px;
+        margin-top: 30px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-  <header>
-    <h1>
-        AI French Poem Generator
-    </h1>
-  </header>
-  <main>
-    <form id="poem-generator-form">
-        <input type="text" placeholder="Enter French Poem"
-        autofocus
-        required
-        autocomplete="off"
-        class="instructions"
-        /> 
-        <input type="submit" class="submit-button"/>
-    </form>
-    <div class="poem" id="poem"></div>
-  </main>
-    <footer>
-        This AI project was coded with ❤️ by <a href="#" target="_blank">Lungiswa Mgeyi</a>
-        and is <a href="https://github.com/lungiswa23M" target="_blank">open sourced on Github</a>
+      <header>
+        <h1>AI French Poem Generator</h1>
+      </header>
+      <main>
+        <form id="poem-generator-form">
+          <input
+            type="text"
+            placeholder="Enter French Poem"
+            autofocus
+            required
+            autocomplete="off"
+            class="instructions"
+          />
+          <input type="submit" class="submit-button" />
+        </form>
+        <div class="poem" id="poem"></div>
+      </main>
+      <footer>
+        This AI project was coded with ❤️ by
+        <a href="#" target="_blank">Lungiswa Mgeyi</a> and is
+        <a href="https://github.com/lungiswa23M" target="_blank"
+          >open sourced on Github</a
+        >
         and <a href="#" target="_blank">hosted on Netlify</a>
-    </footer>
+      </footer>
     </div>
 
     <script>
-        function generatePoem(event) {
-            event.preventDefault();
+      function generatePoem(event) {
+        event.preventDefault();
 
-            new Typewriter('#poem', {
-            strings: "L’été l’hiver je t’ai vue",
-            autoStart: true,
-            delay: 1,
-            cursor: "",
-          });
-        }
+        new Typewriter("#poem", {
+          strings: "L’été l’hiver je t’ai vue",
+          autoStart: true,
+          delay: 1,
+          cursor: "",
+        });
+      }
 
-        let poemFormElement = document.querySelector("#poem-generator-form");
-        poemFormElement.addEventElement("submit", generatePoem);
+      let poemFormElement = document.querySelector("#poem-generator-form");
+      poemFormElement.addEventListener("submit", generatePoem);
     </script>
-</body>
+  </body>
 </html>
