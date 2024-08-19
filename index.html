@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <title>AI French Poem Generator</title>
     <style>
         body {
@@ -84,7 +85,7 @@
     </h1>
   </header>
   <main>
-    <form>
+    <form id="poem-generator-form">
         <input type="text" placeholder="Enter French Poem"
         autofocus
         required
@@ -93,11 +94,7 @@
         /> 
         <input type="submit" class="submit-button"/>
     </form>
-    <div class="poem">
-        L’été l’hiver je t’ai vue
-        <br />
-        Dans ma maison je t’ai vue
-    </div>
+    <div class="poem" id="poem"></div>
   </main>
     <footer>
         This AI project was coded with ❤️ by <a href="#" target="_blank">Lungiswa Mgeyi</a>
@@ -105,5 +102,21 @@
         and <a href="#" target="_blank">hosted on Netlify</a>
     </footer>
     </div>
+
+    <script>
+        function generatePoem(event) {
+            event.preventDefault();
+
+            new Typewriter('#poem', {
+            strings: "L’été l’hiver je t’ai vue",
+            autoStart: true,
+            delay: 1,
+            cursor: "",
+          });
+        }
+
+        let poemFormElement = document.querySelector("#poem-generator-form");
+        poemFormElement.addEventElement("submit", generatePoem);
+    </script>
 </body>
 </html>
