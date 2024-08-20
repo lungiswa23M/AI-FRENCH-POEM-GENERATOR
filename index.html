@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <title>AI French Poem Generator</title>
     <style>
       body {
@@ -56,6 +57,10 @@
         border-left: 3px solid #ee4266;
       }
 
+      .poem strong {
+        color:#ee4266;
+      }
+
       form {
         padding: 30px;
         background-color: white;
@@ -92,6 +97,7 @@
             required
             autocomplete="off"
             class="instructions"
+            id="user-instructions"
           />
           <input type="submit" class="submit-button" />
         </form>
@@ -108,19 +114,33 @@
     </div>
 
     <script>
-      function generatePoem(event) {
-        event.preventDefault();
-
+       function displayPoem(response) {
+        console.log("poem generatated");
         new Typewriter("#poem", {
-          strings: "L’été l’hiver je t’ai vue",
+          string: response.data.answer,
           autoStart: true,
           delay: 1,
-          cursor: "",
+          cursor: " ",
         });
-      }
+       }
 
-      let poemFormElement = document.querySelector("#poem-generator-form");
-      poemFormElement.addEventListener("submit", generatePoem);
+       function generatePoem(event) {
+        event.preventDefault();
+
+        let instructionsInput = document.querySelector("#user-instructions");
+        let apiKey = "d223149o5714c0b4820a8f3adba7bta9";
+        let context = "You are a Poem expert and love to write short poems. Your mission is to write french poem in 4 lines and separate each line.";
+        let prompt = `Generate a french poem about ${instructionsInput.value}`;
+        let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${key}`;
+
+        console.log("Generating poem");
+        console.log(`Prompt: ${prompt}`);
+        console.log(`Context: ${context}`);
+
+        axios.get(apiUrl).then(displayPoem);
+       }
+       let poemFormElement = document.querySelector("#poem-generator-form");
+       poemFormElement.addEventListener("submit", generatePoem);
     </script>
   </body>
 </html>
