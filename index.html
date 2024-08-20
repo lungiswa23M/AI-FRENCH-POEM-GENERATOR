@@ -83,25 +83,30 @@
       }
     </style>
   </head>
-  <body>
+   <body>
     <div class="container">
       <header>
         <h1>AI French Poem Generator</h1>
       </header>
+
       <main>
-        <form id="poem-generator-form">
-          <input
-            type="text"
-            placeholder="Enter French Poem"
-            autofocus
-            required
-            autocomplete="off"
-            class="instructions"
-            id="user-instructions"
-          />
-          <input type="submit" class="submit-button" />
-        </form>
-        <div class="poem" id="poem"></div>
+        <div class="form-container">
+          <form id="poem-generator-form">
+            <input
+              type="text"
+              placeholder="Enter the topic of a French poem"
+              autofocus
+              required
+              autocomplete="off"
+              class="instructions"
+              id="user-instructions"
+            />
+            <input type="submit" class="submit-button" />
+          </form>
+          <div class="hint">i.e: Flower, Paris or Cheese</div>
+        </div>
+        <div class="poem hidden" id="poem"></div>
+      </main>
       </main>
       <footer>
         This AI project was coded with ❤️ by
@@ -115,7 +120,6 @@
 
     <script>
        function displayPoem(response) {
-        console.log("poem generatated");
         new Typewriter("#poem", {
           string: response.data.answer,
           autoStart: true,
@@ -131,11 +135,7 @@
         let apiKey = "d223149o5714c0b4820a8f3adba7bta9";
         let context = "You are a Poem expert and love to write short poems. Your mission is to write french poem in 4 lines and separate each line.";
         let prompt = `Generate a french poem about ${instructionsInput.value}`;
-        let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${key}`;
-
-        console.log("Generating poem");
-        console.log(`Prompt: ${prompt}`);
-        console.log(`Context: ${context}`);
+        let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
         axios.get(apiUrl).then(displayPoem);
        }
